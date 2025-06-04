@@ -1,0 +1,75 @@
+@import "tailwindcss";
+.btn-101,
+.btn-101 *,
+.btn-101 :after,
+.btn-101 :before,
+.btn-101:after,
+.btn-101:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-101 {
+  --thickness: 0.3rem;
+  --roundness: 1.2rem;
+  --color: #eff6ff;
+  --opacity: 0.6;
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  background: hsla(0, 0%, 100%, 0.2);
+  border-radius: var(--roundness);
+  color: var(--color);
+  cursor: pointer;
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-101:hover {
+  background: hsla(0, 0%, 100%, 0.3);
+  filter: brightness(1.2);
+}
+
+.btn-101:active {
+  --opacity: 0;
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+.btn-101 svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--roundness);
+  display: block;
+  pointer-events: none;
+}
+
+.btn-101 rect {
+  fill: none;
+  stroke: var(--color);
+  stroke-width: var(--thickness);
+  rx: var(--roundness);
+  stroke-linejoin: round;
+  stroke-dasharray: 185%;
+  stroke-dashoffset: 80;
+  animation: snake 2s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.btn-101:hover rect {
+  animation-play-state: running;
+  opacity: var(--opacity);
+}
+
+@keyframes snake {
+  to {
+    stroke-dashoffset: 370%;
+  }
+}
